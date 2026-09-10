@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoadingScreen from "./components/LoadingScreen";
 import Cursor from "./components/Cursor";
 import Navbar from "./components/Navbar";
@@ -9,11 +10,11 @@ import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Achievements from "./components/Achievements";
 import Contact from "./components/Contact";
+import NotFound from "./components/NotFound";
 
-export default function App() {
+function MainSite() {
   const [loaded, setLoaded] = useState(false);
   const onDone = useCallback(() => setLoaded(true), []);
-
   return (
     <>
       <LoadingScreen onDone={onDone} />
@@ -33,5 +34,16 @@ export default function App() {
         </>
       )}
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainSite />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
