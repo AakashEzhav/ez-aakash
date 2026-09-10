@@ -1,0 +1,23 @@
+@media (pointer: fine) { body { cursor: none; } a, button { cursor: none; } }
+.cursor-dot {
+  position: fixed; top: -5px; left: -5px;
+  width: 10px; height: 10px;
+  background: var(--fg); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  will-change: transform; transition: opacity 0.2s;
+}
+.cursor-dot--hide { opacity: 0; }
+.cursor-ring {
+  position: fixed; top: -20px; left: -20px;
+  width: 40px; height: 40px;
+  border: 2px solid rgba(15,15,15,0.4); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  will-change: transform;
+  transition: width 0.25s, height 0.25s, top 0.25s, left 0.25s, border-color 0.2s;
+}
+.cursor-ring--big {
+  width: 60px; height: 60px;
+  top: -30px; left: -30px;
+  border-color: var(--accent-orange);
+}
+@media (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } }

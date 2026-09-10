@@ -1,0 +1,86 @@
+.exp__label {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(0,0,0,0.5);
+  margin-bottom: 0.5rem; display: block; max-width: none;
+}
+#experience h2 { color: var(--fg); margin-bottom: 3.5rem; }
+
+/* Timeline container */
+.exp__timeline {
+  position: relative;
+  padding: 1rem 0 2rem;
+}
+.exp__timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: var(--fg);
+  transform: translateX(-50%);
+}
+
+/* Each item */
+.exp__item {
+  position: relative;
+  width: 46%;
+  margin-bottom: 3rem;
+}
+.exp__item--left { margin-right: auto; margin-left: 0; }
+.exp__item--right { margin-left: auto; margin-right: 0; }
+
+/* Card */
+.exp__card {
+  border: 2.5px solid var(--fg);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.exp__card-date {
+  font-size: 0.8rem; font-style: italic;
+  font-family: var(--font-serif);
+  color: rgba(0,0,0,0.6);
+  margin-bottom: 0.4rem; max-width: none;
+}
+.exp__card-role {
+  font-size: 1.2rem; font-family: var(--font-serif);
+  color: var(--fg); margin-bottom: 0.25rem;
+}
+.exp__card-company {
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--fg); opacity: 0.75;
+  margin-bottom: 1rem; max-width: none;
+}
+.exp__card-bullets {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0.55rem;
+}
+.exp__card-bullets li {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  font-size: 0.88rem; color: var(--fg);
+  line-height: 1.55;
+}
+.exp__star { flex-shrink: 0; margin-top: 0.05rem; }
+
+/* Timeline dot */
+.exp__timeline-dot {
+  position: absolute;
+  width: 18px; height: 18px;
+  background: var(--fg);
+  border-radius: 50%;
+  border: 3px solid var(--section-cyan);
+  top: 1.8rem;
+  box-shadow: 0 0 0 3px var(--fg);
+}
+.exp__item--left .exp__timeline-dot { right: -9.5%; }
+.exp__item--right .exp__timeline-dot { left: -9.5%; }
+
+@media (max-width: 700px) {
+  .exp__timeline-line { left: 18px; }
+  .exp__item, .exp__item--left, .exp__item--right {
+    width: calc(100% - 3rem);
+    margin-left: 3rem !important;
+    margin-right: 0 !important;
+  }
+  .exp__timeline-dot { left: -2.8rem !important; right: auto !important; }
+}

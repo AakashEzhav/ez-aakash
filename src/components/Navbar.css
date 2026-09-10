@@ -1,0 +1,96 @@
+.navbar {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: calc(100% - 3rem);
+  max-width: 900px;
+}
+
+.navbar__pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--fg);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 0.55rem 0.55rem 1rem;
+  box-shadow: var(--shadow-lg);
+  gap: 1rem;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.navbar__logo-circle {
+  width: 32px; height: 32px;
+  background: var(--accent-orange);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.navbar__links {
+  display: flex;
+  list-style: none;
+  gap: 0.1rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar__link {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  border-radius: var(--radius-pill);
+  transition: color 0.15s, background 0.15s;
+}
+.navbar__link:hover { color: #fff; background: rgba(255,255,255,0.12); }
+
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+}
+.navbar__burger span {
+  display: block; width: 18px; height: 2px;
+  background: #fff; border-radius: 2px;
+}
+
+.navbar__mobile {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0; right: 0;
+  background: var(--fg);
+  border-radius: var(--radius-lg);
+  display: flex; flex-direction: column;
+  padding: 0.75rem 0;
+  box-shadow: var(--shadow-lg);
+}
+.navbar__mobile-link {
+  padding: 0.75rem 1.5rem;
+  text-align: left; font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  transition: color 0.15s;
+}
+.navbar__mobile-link:hover { color: #fff; }
+
+@media (max-width: 680px) {
+  .navbar__links { display: none; }
+  .navbar__burger { display: flex; }
+}

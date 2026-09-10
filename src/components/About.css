@@ -1,0 +1,46 @@
+.about__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  margin-bottom: 0.5rem;
+  display: block;
+  max-width: none;
+}
+#about h2 { margin-bottom: 1.5rem; }
+.about__bio {
+  font-size: clamp(1rem, 1.7vw, 1.12rem);
+  line-height: 1.8;
+  color: var(--fg-muted);
+  max-width: 64ch;
+  margin-bottom: 2rem;
+}
+.about__tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+.about__tag {
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--fg);
+  border: 2px solid var(--fg);
+  box-shadow: 2px 2px 0 var(--fg);
+}
+.about__open-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 0.75rem;
+  max-width: none;
+}
+.about__open-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.about__open-tag {
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 500;
+  background: var(--bg);
+  border: 2px solid var(--fg);
+  color: var(--fg);
+  box-shadow: 2px 2px 0 var(--fg);
+}

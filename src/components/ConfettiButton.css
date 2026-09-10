@@ -1,0 +1,15 @@
+.confetti-btn {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--fg);
+  border: 2.5px solid var(--fg);
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  box-shadow: 3px 3px 0 var(--fg);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.confetti-btn:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--fg); }
+.confetti-btn:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--fg); }
