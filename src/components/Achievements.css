@@ -1,0 +1,16 @@
+.ach__label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-subtle); margin-bottom: 0.5rem; display: block; max-width: none; }
+#achievements h2 { margin-bottom: 2rem; }
+.ach__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.ach__col-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-subtle); margin-bottom: 1.25rem; max-width: none; }
+.ach__item { display: flex; gap: 0.85rem; align-items: flex-start; margin-bottom: 1.5rem; }
+.ach__emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+.ach__item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.2rem; }
+.ach__item-header strong { font-size: 0.95rem; font-family: var(--font-serif); color: var(--fg); }
+.ach__date { font-size: 0.72rem; color: var(--fg-subtle); }
+.ach__desc { font-size: 0.88rem; color: var(--fg-muted); line-height: 1.6; max-width: none; }
+.cert__item { display: flex; gap: 1rem; align-items: flex-start; padding: 0.85rem 0; border-bottom: 1px solid var(--border, #e2d9cc); }
+.cert__item:last-child { border-bottom: none; }
+.cert__year { font-size: 0.72rem; font-weight: 700; color: var(--fg-subtle); min-width: 34px; padding-top: 0.1rem; }
+.cert__name { font-size: 0.9rem; font-weight: 500; color: var(--fg); max-width: none; margin-bottom: 0.1rem; }
+.cert__org { font-size: 0.78rem; color: var(--fg-subtle); max-width: none; }
+@media (max-width: 680px) { .ach__grid { grid-template-columns: 1fr; gap: 2rem; } }

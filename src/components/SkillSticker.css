@@ -1,0 +1,15 @@
+.skill-sticker {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 2px solid var(--fg);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  box-shadow: 2px 2px 0 var(--fg);
+  white-space: nowrap;
+}
+.skill-sticker:active { cursor: grabbing; }

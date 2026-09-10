@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  --bg: #faf8f4;
+  --fg: #0f0f0f;
+  --fg-muted: #555;
+  --fg-subtle: #999;
+  --accent-orange: #e8623a;
+  --accent-pink: #ff6b9d;
+  --accent-cyan: #00d4f5;
+  --accent-yellow: #ffd93d;
+  --accent-green: #a8e63d;
+  --accent-peach: #f4a261;
+  --section-orange: #f4a261;
+  --section-cyan: #00d4f5;
+  --border: #1a1a1a;
+  --radius: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --shadow: 4px 4px 0px #0f0f0f;
+  --shadow-lg: 6px 6px 0px #0f0f0f;
+  --container: 1100px;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --nav-h: 68px;
+  /* Grid background */
+  --grid-color: rgba(0,0,0,0.055);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--fg);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.1; color: var(--fg); }
+h1 { font-size: clamp(3rem, 8vw, 6rem); }
+h2 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 400; }
+h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
+
+p { font-size: clamp(0.95rem, 1.4vw, 1.05rem); color: var(--fg-muted); }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: var(--font-sans); border: none; background: none; }
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+}
+
+section { padding: clamp(5rem, 9vw, 8rem) 0; position: relative; }
+
+/* Colored section backgrounds */
+.section-orange { background-color: var(--section-orange); background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px); background-size: 40px 40px; }
+.section-cyan { background-color: var(--section-cyan); background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px); background-size: 40px 40px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+}

@@ -1,0 +1,177 @@
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--nav-h) + 2rem);
+  padding-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating circles — match reference exactly */
+.hero__circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero__circle--salmon {
+  width: 140px; height: 140px;
+  background: #f4917a;
+  border: 3px solid var(--fg);
+  top: 18%; left: 1%;
+  animation: floatA 6s ease-in-out infinite;
+}
+.hero__circle--cyan {
+  width: 180px; height: 180px;
+  background: var(--accent-cyan);
+  border: 3px solid var(--fg);
+  top: 12%; right: 3%;
+  animation: floatB 7s ease-in-out infinite;
+}
+.hero__circle--peach {
+  width: 110px; height: 110px;
+  background: #f4a261;
+  border: 3px solid var(--fg);
+  bottom: 22%; right: 8%;
+  animation: floatA 8s ease-in-out infinite 1s;
+}
+.hero__circle--yellow {
+  width: 90px; height: 90px;
+  background: var(--accent-yellow);
+  border: 3px solid var(--fg);
+  bottom: 6%; left: 10%;
+  animation: floatB 9s ease-in-out infinite 0.5s;
+}
+
+@keyframes floatA {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+@keyframes floatB {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(14px); }
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Greeting */
+.hero__greeting-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--accent-orange);
+}
+.hero__greeting-word { display: inline-block; min-width: 3ch; }
+.hero__greeting-rest { color: var(--accent-orange); }
+
+/* Status pill */
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--fg);
+  color: #fff;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  box-shadow: 3px 3px 0 var(--accent-orange);
+}
+.hero__status-dot {
+  width: 8px; height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(74,222,128,0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 2px rgba(74,222,128,0.3); }
+  50% { box-shadow: 0 0 0 5px rgba(74,222,128,0.15); }
+}
+
+/* Big name */
+.hero__name {
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  line-height: 1.0;
+  margin-bottom: 1rem;
+  color: var(--fg);
+}
+.hero__name-accent { color: var(--accent-orange); }
+.hero__name-accent2 { color: var(--accent-pink); }
+
+/* Yellow role box */
+.hero__role-box {
+  display: inline-block;
+  background: var(--accent-yellow);
+  border: 2.5px solid var(--fg);
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 1.4rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  color: var(--fg);
+  margin-bottom: 1.75rem;
+  box-shadow: 4px 4px 0 var(--fg);
+}
+
+/* Description */
+.hero__desc {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  color: var(--fg-muted);
+  max-width: 55ch;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.hero__buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2.5px solid var(--fg);
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: var(--shadow);
+}
+.hero__btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--fg); }
+.hero__btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--fg); }
+
+.hero__btn--primary { background: var(--accent-orange); color: #fff; }
+.hero__btn--secondary { background: var(--accent-cyan); color: var(--fg); }
+
+@media (max-width: 600px) {
+  .hero__circle--salmon { width: 80px; height: 80px; left: -20px; }
+  .hero__circle--cyan { width: 100px; height: 100px; right: -20px; }
+  .hero__circle--peach { width: 70px; height: 70px; }
+  .hero__circle--yellow { width: 60px; height: 60px; }
+  .hero__buttons { flex-direction: column; align-items: flex-start; }
+}
+
+/* Fix greeting suffix and lang label */
+.hero__greeting-suffix {
+  color: var(--accent-orange);
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+.hero__greeting-lang {
+  font-size: 0.75rem;
+  color: var(--fg-subtle);
+  font-family: var(--font-sans);
+  font-style: normal;
+  margin-left: 0.5rem;
+  align-self: center;
+}
