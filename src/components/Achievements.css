@@ -1,16 +1,203 @@
-.ach__label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-subtle); margin-bottom: 0.5rem; display: block; max-width: none; }
-#achievements h2 { margin-bottom: 2rem; }
-.ach__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-.ach__col-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-subtle); margin-bottom: 1.25rem; max-width: none; }
-.ach__item { display: flex; gap: 0.85rem; align-items: flex-start; margin-bottom: 1.5rem; }
-.ach__emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
-.ach__item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.2rem; }
-.ach__item-header strong { font-size: 0.95rem; font-family: var(--font-serif); color: var(--fg); }
-.ach__date { font-size: 0.72rem; color: var(--fg-subtle); }
-.ach__desc { font-size: 0.88rem; color: var(--fg-muted); line-height: 1.6; max-width: none; }
-.cert__item { display: flex; gap: 1rem; align-items: flex-start; padding: 0.85rem 0; border-bottom: 1px solid var(--border, #e2d9cc); }
-.cert__item:last-child { border-bottom: none; }
-.cert__year { font-size: 0.72rem; font-weight: 700; color: var(--fg-subtle); min-width: 34px; padding-top: 0.1rem; }
-.cert__name { font-size: 0.9rem; font-weight: 500; color: var(--fg); max-width: none; margin-bottom: 0.1rem; }
-.cert__org { font-size: 0.78rem; color: var(--fg-subtle); max-width: none; }
-@media (max-width: 680px) { .ach__grid { grid-template-columns: 1fr; gap: 2rem; } }
+/* ── Section shell ──────────────────────────────────── */
+#achievements { overflow: visible; }
+
+.ach__label {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--fg-subtle);
+  margin-bottom: 0.5rem; display: block; max-width: none;
+}
+#achievements h2 { margin-bottom: 0.5rem; }
+
+.ach__subtitle {
+  font-size: 0.95rem; font-style: italic; color: var(--fg-muted);
+  margin-bottom: 3rem; max-width: none;
+}
+
+/* ── Corkboard for stickies ─────────────────────────── */
+.ach__board {
+  background: #d4a96a;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,0.07) 39px, rgba(0,0,0,0.07) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,0.07) 39px, rgba(0,0,0,0.07) 40px);
+  border: 3px solid var(--fg);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.ach__board-label {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.8);
+  margin-bottom: 1.5rem;
+}
+
+.ach__stickies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* ── Sticky note card ───────────────────────────────── */
+.ach-card {
+  width: clamp(200px, 28%, 240px);
+  min-height: 220px;
+  padding: 1.25rem;
+  border-radius: 4px 16px 16px 16px;
+  border: 2px solid rgba(0,0,0,0.15);
+  box-shadow: 4px 6px 16px rgba(0,0,0,0.2);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: box-shadow 0.2s;
+}
+.ach-card:active { cursor: grabbing; }
+.ach-card--lifted { box-shadow: 8px 14px 32px rgba(0,0,0,0.28); }
+
+/* Pin at top */
+.ach-card__pin {
+  position: absolute;
+  top: -10px; left: 50%; transform: translateX(-50%);
+  width: 16px; height: 16px;
+  background: radial-gradient(circle at 40% 35%, #fff 0%, #cc3333 35%, #880000 100%);
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.25);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  z-index: 1;
+}
+
+.ach-card__emoji { font-size: 1.6rem; }
+.ach-card__title { font-size: 0.95rem; font-weight: 700; color: #0f0f0f; font-family: var(--font-sans); line-height: 1.3; }
+.ach-card__date { font-size: 0.7rem; color: rgba(0,0,0,0.5); font-style: italic; }
+.ach-card__desc { font-size: 0.8rem; color: rgba(0,0,0,0.7); line-height: 1.55; max-width: none; flex: 1; }
+.ach-card__bullet { font-size: 0.75rem; color: rgba(0,0,0,0.55); max-width: none; }
+.ach-card__drag-hint {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(0,0,0,0.35);
+  margin-top: auto; padding-top: 0.5rem;
+  border-top: 1px dashed rgba(0,0,0,0.15);
+}
+
+/* ── Cert section header ────────────────────────────── */
+.ach__certs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ach__flip-all {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1.2rem;
+  background: var(--fg); color: #fff;
+  border: 2.5px solid var(--fg);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem; font-weight: 700;
+  cursor: pointer; font-family: var(--font-sans);
+  box-shadow: 3px 3px 0 var(--accent-orange);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.ach__flip-all:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--accent-orange); }
+
+/* ── Cert card grid ─────────────────────────────────── */
+.ach__cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 1rem;
+}
+
+/* ── Flip card ──────────────────────────────────────── */
+.cert-card {
+  height: 180px;
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.cert-card__inner {
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius);
+}
+
+.cert-card__inner--flipped {
+  transform: rotateY(180deg);
+}
+
+.cert-card__face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  border: 2.5px solid var(--fg);
+  box-shadow: 4px 4px 0 var(--fg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+/* Front */
+.cert-card__front {
+  align-items: flex-start;
+}
+.cert-card__num {
+  font-size: 0.7rem; font-weight: 800;
+  letter-spacing: 0.1em; opacity: 0.5;
+}
+.cert-card__org-front {
+  font-size: 1rem; font-weight: 700;
+  color: inherit; max-width: none; line-height: 1.3;
+}
+.cert-card__hint {
+  font-size: 0.68rem; opacity: 0.55;
+  font-style: italic; letter-spacing: 0.04em;
+}
+
+/* Back */
+.cert-card__back {
+  background: #fff;
+  transform: rotateY(180deg);
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+.cert-card__year-badge {
+  font-size: 0.68rem; font-weight: 800;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--fg);
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+.cert-card__name {
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--fg); line-height: 1.4;
+  max-width: none; flex: 1;
+}
+.cert-card__org-back {
+  font-size: 0.72rem; color: var(--fg-subtle);
+  max-width: none;
+}
+.cert-card__check {
+  font-size: 1.2rem; color: #22c55e;
+  font-weight: 800; margin-top: auto;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 600px) {
+  .ach__stickies { flex-direction: column; align-items: center; }
+  .ach-card { width: 100%; }
+  .ach__cert-grid { grid-template-columns: repeat(2, 1fr); }
+}
