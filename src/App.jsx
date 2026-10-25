@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoadingScreen from "./components/LoadingScreen";
+import EyeAsciiLoader from "./components/EyeAsciiLoader";
 import Cursor from "./components/Cursor";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -13,11 +13,13 @@ import Contact from "./components/Contact";
 import NotFound from "./components/NotFound";
 
 function MainSite() {
-  const [loaded, setLoaded] = useState(false);
-  const onDone = useCallback(() => setLoaded(true), []);
+  const [loaded, setLoaded] = useState(false);      // homepage mounted (starts under the loader's reveal phase)
+  const [overlay, setOverlay] = useState(true);       // loader overlay still present
+  const onReveal = useCallback(() => setLoaded(true), []);
+  const onDone = useCallback(() => setOverlay(false), []);
   return (
     <>
-      <LoadingScreen onDone={onDone} />
+      {overlay && <EyeAsciiLoader onReveal={onReveal} onComplete={onDone} oncePerSession={false} />}
       {loaded && (
         <>
           <Cursor />
