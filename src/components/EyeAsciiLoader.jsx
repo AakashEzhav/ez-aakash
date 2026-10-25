@@ -269,9 +269,10 @@ export default function EyeAsciiLoader({ onReveal, onComplete, src = '/eye-sourc
       const w = Math.max(1, Math.round(rect.width * dpr)), h = Math.max(1, Math.round(rect.height * dpr));
       canvas.width = w; canvas.height = h;
       const aspect = img.naturalHeight / img.naturalWidth;
-      const iw = w < h ? w * 0.98 : Math.min(w * 0.74, h * 1.45);
+      // Fill the screen: landscape scales toward full-bleed (capped so the eyelids stay in frame); portrait crops the faded edges.
+      const iw = w < h ? w * 1.2 : Math.max(Math.min(w * 0.74, h * 1.45), Math.min(w, h * aspect ** -1 * 1.3));
       S = { w, h, dpr, cx: w / 2, cy: h / 2, iw, ih: iw * aspect, small };
-      Zt = (1.35 * Math.min(w, h)) / (IRIS_D * iw);
+      Zt = Math.max(1.9, (1.35 * Math.min(w, h)) / (IRIS_D * iw));
       const baseCols = clamp(Math.round(iw / (dpr * 4.4)), 110, 300);
       base = buildGrid(img, { x: 0, y: 0, w: 1, h: 1 }, baseCols, iw / baseCols, 11, true);
       const zx0 = 0, zw = 1;
